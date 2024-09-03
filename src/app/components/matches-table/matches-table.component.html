@@ -1,0 +1,35 @@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Score one</th>
+                <th scope="col">Score two</th>
+                <th scope="col">Team one</th>
+                <th scope="col">Team two</th>
+                <th scope="col">Result</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elt of matchesTable">
+                <td>{{elt._id}}</td>
+                <td>{{elt.scoreTwo}}</td> 
+                <td>{{elt.scoreOne}}</td> 
+                <td [ngClass]="{ win: elt.scoreOne<elt.scoreTwo,loss:elt.scoreOne>elt.scoreTwo,draw:(elt.scoreTwo==elt.scoreOne)}">{{elt.teamOne}}</td>  
+                <!-- <td [ngClass]="{ win: resultColor(elt.scoretwo,elt.scoreone)=='green',loss:resultColor(elt.scoretwo,elt.scoreone)=='red',draw:resultColor(elt.scoretwo,elt.scoreone)=='white'}">{{elt.teamtwo}}</td>  -->
+                <td [ngClass]="{ loss: elt.scoreOne<elt.scoreTwo,win:elt.scoreOne>elt.scoreTwo,draw:(elt.scoreTwo==elt.scoreOne)}">{{elt.teamTwo}}</td>  
+
+                <td >
+                    <span [ngStyle]="{color:tableScoreResult(elt.scoreTwo,elt.scoreOne,elt.teamTwo)[0]}" >{{tableScoreResult(elt.scoreTwo,elt.scoreOne,elt.teamTwo)[2]}}</span>
+                    <span [ngStyle]="{color:tableScoreResult(elt.scoreTwo,elt.scoreOne,elt.teamTwo)[1]}" *ngIf="elt.scoreOne !=elt.scoreTwo">{{tableScoreResult(elt.scoreTwo,elt.scoreOne,elt.teamTwo)[1]}}</span>
+                </td> 
+                <td>  <button type="button" class="btn btn-success" style="margin-left: 10px; margin-right: 10px;" (click)="goToInfo(elt._id)">Display</button>
+                    <button type="button" class="btn btn-danger"  style="margin-right: 10px;" (click)="deleteMatch(elt._id)">Delete</button>
+                    <button type="button" class="btn btn-info" (click)="goToEdit(elt._id)" >Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <td [ngClass]="{ win: resultColor(elt.scoretwo,elt.scoreone)=='green',loss:resultColor(elt.scoretwo,elt.scoreone)=='red',draw:resultColor(elt.scoretwo,elt.scoreone)=='white'}">{{elt.teamtwo}}</td>  -->
+
+

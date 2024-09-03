@@ -1,0 +1,44 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">{{title |asterix}}</h1>
+                <h1 class="text-white">{{title |inverse}}</h1>
+                <h1 class="text-white">{{title |inverse|asterix}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top: 50px;">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="matches-tab" data-toggle="tab" href="#matches" role="tab"
+                    aria-controls="matches" aria-selected="true">{{titles[0]}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="teams-tab" data-toggle="tab" href="#teams" role="tab" aria-controls="teams"
+                    aria-selected="false">{{titles[2]}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="players-tab" data-toggle="tab" href="#players" role="tab"
+                    aria-controls="players" aria-selected="false">{{titles[1]}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="stadium-tab" data-toggle="tab" href="#stadium" role="tab"
+                    aria-controls="stadium" aria-selected="false">{{titles[3]}}</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="matches" role="tabpanel" aria-labelledby="matches-tab">
+                <app-matches-table></app-matches-table></div>
+            <div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="teams-tab">
+                <app-teams-table></app-teams-table></div>
+
+            <div class="tab-pane fade" id="players" role="tabpanel" aria-labelledby="players-tab">
+                <app-players-table></app-players-table></div>
+            <div class="tab-pane fade" id="stadium" role="tabpanel" aria-labelledby="stadium-tab">
+                <app-stadium-table></app-stadium-table></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+
+    <table class="table">
+        <thead>
+            <tr >
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Foundation</th>
+                <th scope="col">Players</th>
+                <th scope="col" >Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elt of teamsTable">
+                <td>{{elt._id}}</td> 
+                <td>{{elt.name}}</td> 
+                <td>{{elt.owner}}</td> 
+                <td>{{elt.foundation}}</td> 
+                <td><span *ngFor="let player of elt.players">
+                    {{player.name}} :: {{player.number}}::{{player.age}}::{{player.position}} <br>
+                </span></td> 
+                 
+            
+              <td>  <button type="button" class="btn btn-success" style="margin-left: 10px; margin-right: 10px;" (click)="goToInfo(elt._id)">Display</button>
+                <button type="button" class="btn btn-danger"  style="margin-right: 10px;" (click)="deleteTeam(elt._id)">Delete</button>
+                <button type="button" class="btn btn-info" (click)="goToEdit(elt._id)">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
